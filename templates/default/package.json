@@ -1,0 +1,58 @@
+{
+  "name": "directus-mysql-template",
+  "version": "1.0.8",
+  "description": "A helper app to configure Directus on Docker with MySQL, Adminer, and GraphQL",
+  "main": "./lib/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./lib/index.js",
+    "launch": "node ./lib/index.js",
+    "stop": "docker-compose down",
+    "test": "echo \"No test specified\""
+  },
+  "bin": {
+    "create-directus-docker": "./lib/index.js",
+    "cdd": "./lib/index.js"
+  },
+  "files": [
+    "docker-compose.yml",
+    "lib/**/*",
+    "./lib/index.js",
+    "./lib/check-requirements.js",
+    "./lib/launch-services.js"
+  ],
+  "keywords": [
+    "directus",
+    "docker",
+    "mysql",
+    "installer"
+  ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rollmug/directus-mysql-template.git"
+  },
+  "author": {
+    "name": "Dave Kobrenski",
+    "email": "dave@rlmg.com"
+  },
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/rollmug/directus-mysql-template/issues"
+  },
+  "homepage": "https://github.com/rollmug/directus-mysql-template#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "dotenv": "^16.0.3",
+    "generate-password": "^1.7.0",
+    "inquirer": "^9.1.4",
+    "log-update": "^5.0.1",
+    "lookpath": "^1.2.2",
+    "open": "^8.4.0",
+    "ora": "^6.1.2",
+    "wait-on": "^7.0.1"
+  }
+}

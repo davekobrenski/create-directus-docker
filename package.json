@@ -1,0 +1,36 @@
+{
+  "name": "create-directus-docker",
+  "description": "An installer for Dockerized Directus + MySQL + Adminer + GraphiQL with a helper Node app",
+  "version": "1.0.9",
+  "author": {
+    "name": "Dave Kobrenski",
+    "email": "dave@rlmg.com"
+  },
+  "bin": "src/cli.js",
+  "keywords": [
+    "directus",
+    "docker",
+    "mysql",
+    "installer"
+  ],
+  "scripts": {
+    "start": "npm-run-all -p copy:*",
+    "copy:package": "copy-file ../directus-mysql-template/package.json ./templates/default/package.json",
+    "copy:compose": "copy-file ../directus-mysql-template/docker-compose.yml ./templates/default/docker-compose.yml",
+    "copy:readme": "copy-file ../directus-mysql-template/README.md ./templates/default/README.md",
+    "copy:lib": "copyfiles --flat ../directus-mysql-template/lib/*.js ./templates/default/lib"
+  },
+  "files": [
+    "src",
+    "templates"
+  ],
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "create-create-app": "^7.3.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "copy-file-util": "^0.1.6",
+    "npm-run-all": "^4.1.5"
+  }
+}
