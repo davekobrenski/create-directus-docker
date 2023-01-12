@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
 import chalk from 'chalk';
-const { resolve } = require('path');
-const { create } = require('create-create-app');
+import { resolve } from 'path';
+import { create } from 'create-create-app';
+// const { resolve } = require('path');
+//const { create } = require('create-create-app');
 
 const templateRoot = resolve(__dirname, '..', 'templates');
 
