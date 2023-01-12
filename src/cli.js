@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
 import chalk from 'chalk';
+import path from 'path';
+import {fileURLToPath} from 'url';
 import { resolve } from 'path';
 import { create } from 'create-create-app';
 // const { resolve } = require('path');
 //const { create } = require('create-create-app');
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const templateRoot = resolve(__dirname, '..', 'templates');
 
 const caveat = () => {
