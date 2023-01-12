@@ -19,7 +19,11 @@ create('create-directus-docker', {
   promptForEmail: false,
   promptForLicense: false,
 
-  after: ({packageDir}) => {
+  // after: ({packageDir}) => {
+    
+  // },
+
+  caveat: ({ packageDir }) => {
     const cd = spawn('cd', [packageDir]);
     cd.on('close', code => {
       const install = spawn('npm', ['install']);
@@ -33,9 +37,7 @@ create('create-directus-docker', {
         execa('npm', ['start']).stdout.pipe(process.stdout);
       });
     });
-  },
 
-  caveat: ({ packageDir }) => {
     return `
 ${chalk.bold.yellowBright("Directus with MySQL, Adminer, and GraphiQL:")}
 
