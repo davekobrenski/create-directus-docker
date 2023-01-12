@@ -18,7 +18,6 @@ ${chalk.yellow("Directus with MySQL, Adminer, and GraphiQL:")}
 
 Installed successfully.
 
-${process.argv}
 `
 }
 
