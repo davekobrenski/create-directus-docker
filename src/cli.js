@@ -18,9 +18,9 @@ create('create-directus-docker', {
   promptForAuthor: false,
   promptForEmail: false,
   promptForLicense: false,
-  
+
   after: ({packageDir}) => {
-    const cd = spawn('cd', packageDir);
+    const cd = spawn('cd', [packageDir]);
     cd.on('close', code => {
       const install = spawn('npm', ['install']);
 
