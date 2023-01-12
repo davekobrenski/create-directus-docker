@@ -1,7 +1,7 @@
 {
   "name": "create-directus-docker",
   "description": "An installer for Dockerized Directus + MySQL + Adminer + GraphiQL with a helper Node app",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": {
     "name": "Dave Kobrenski",
     "email": "dave@rlmg.com"
@@ -13,6 +13,11 @@
     "mysql",
     "installer"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rollmug/directus-mysql-template"
+  },
+  "homepage": "https://github.com/rollmug/directus-mysql-template#readme",
   "scripts": {
     "init": "npm-run-all -p copy:*",
     "copy:package": "copy-file ../directus-mysql-template/package.json ./templates/default/package.json",

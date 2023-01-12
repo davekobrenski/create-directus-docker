@@ -12,7 +12,7 @@ This package contains everything you need to get up and running with Directus CM
 **The easiest way to get up and running is to open a terminal session and run:**
 
 ```bash
-npx create-directus-docker <my-project>
+npx create-directus-docker@latest <my-project>
 ```
 
 Then, just follow the on-screen prompts.

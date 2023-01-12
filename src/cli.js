@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const chalk = require('chalk');
+import chalk from 'chalk';
 const { resolve } = require('path');
 const { create } = require('create-create-app');
 
