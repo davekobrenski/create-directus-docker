@@ -14,7 +14,7 @@
     "installer"
   ],
   "scripts": {
-    "start": "npm-run-all -p copy:*",
+    "init": "npm-run-all -p copy:*",
     "copy:package": "copy-file ../directus-mysql-template/package.json ./templates/default/package.json",
     "copy:compose": "copy-file ../directus-mysql-template/docker-compose.yml ./templates/default/docker-compose.yml",
     "copy:readme": "copy-file ../directus-mysql-template/README.md ./templates/default/README.md",
