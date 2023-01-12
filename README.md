@@ -5,7 +5,7 @@ A quick-start installer and launcher for Docker compose, containing Directus wit
 ## Installation & Usage
 
 ```bash
-npx create-directus-docker <my-project>
+npx create-directus-docker@latest <my-project>
 ```
 
 Once installed, simply run:

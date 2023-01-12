@@ -1,7 +1,7 @@
 {
   "name": "create-directus-docker",
   "description": "An installer for Dockerized Directus + MySQL + Adminer + GraphiQL with a helper Node app",
-  "version": "1.0.9",
+  "version": "1.0.8",
   "author": {
     "name": "Dave Kobrenski",
     "email": "dave@rlmg.com"
