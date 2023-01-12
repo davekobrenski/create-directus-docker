@@ -10,7 +10,7 @@ import { create } from 'create-create-app';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // let templateRoot = resolve(__dirname, '../templates');
-const templateRoot = upath.resolve(__dirname, '../templates')
+//const templateRoot = upath.resolve(__dirname, '../templates')
 
 console.log(chalk.redBright("DEBUG:"));
 console.log(__filename);
@@ -24,5 +24,5 @@ Installed successfully.
 `;
 
 create('create-directus-docker', {
-  templateRoot
+  templateRoot: upath.resolve(__dirname, '../templates')
 });
