@@ -17,8 +17,9 @@ ${chalk.bold.yellowBright("Directus with MySQL, Adminer, and GraphiQL:")}
 
 To configure and run your Directus services, run:
 
-${chalk.gray('1.')} npm install
-${chalk.gray('2.')} cd ${chalk.bold.green(packageDir)} && npm start
+${chalk.gray('1.')} cd ${chalk.bold.green(packageDir)}
+${chalk.gray('2.')} npm install
+${chalk.gray('3.')} npm start
 
 For more information, see: 
 https://github.com/davekobrenski/create-directus-docker
