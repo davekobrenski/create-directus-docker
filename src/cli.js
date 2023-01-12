@@ -7,7 +7,7 @@ import {fileURLToPath} from 'url';
 import { create } from 'create-create-app';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);)
+const __dirname = path.dirname(__filename);
 
 create('create-directus-docker', {
   templateRoot: upath.resolve(__dirname, '../templates'),
