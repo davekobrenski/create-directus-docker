@@ -2,6 +2,13 @@
 
 A quick-start installer and launcher for Docker compose, containing Directus with MySQL, an Adminer UI for managing the database, and a GraphiQL playground. Plus a helper app to walk you through initializing environment variables and launching all services. 
 
+## Requirements
+
+You need [Docker](https://www.docker.com) and [Node](https://nodejs.org) installed on your machine:
+
+- [Install Docker Desktop](https://www.docker.com/products/docker-desktop/)  
+- [Install Node](https://nodejs.org/en/download/)
+
 ## Installation & Usage
 
 ```bash
@@ -23,13 +30,6 @@ The wizard will walk you through configuring your environment variables, and wil
 Directus CMS: http://localhost:8055  
 Adminer (for MySQL): http://localhost:8080  
 GraphQL Playground: http://localhost:4000/graphql  
-
-## Requirements
-
-You need [Docker](https://www.docker.com) and [Node](https://nodejs.org) installed on your machine:
-
-- [Install Docker Desktop](https://www.docker.com/products/docker-desktop/)  
-- [Install Node](https://nodejs.org/en/download/)
 
 ## Starting/stopping with Docker Compose
 
