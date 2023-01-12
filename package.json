@@ -1,7 +1,7 @@
 {
   "name": "create-directus-docker",
   "description": "An installer for Dockerized Directus + MySQL + Adminer + GraphiQL with a helper Node app",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "type": "module",
   "author": {
     "name": "Dave Kobrenski",
@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "chalk": "^5.2.0",
-    "create-create-app": "^7.3.0",
+    "create-create-app": "7.1.0",
     "upath": "^2.0.1"
   },
   "license": "MIT",
