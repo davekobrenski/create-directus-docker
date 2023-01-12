@@ -12,6 +12,7 @@ Once installed, simply run:
 
 ```bash
 cd <my-project>
+npm install
 npm start
 ```
 
