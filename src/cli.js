@@ -4,25 +4,25 @@ import upath from 'upath';
 import chalk from 'chalk';
 import path from 'path';
 import {fileURLToPath} from 'url';
-import { resolve } from 'path';
 import { create } from 'create-create-app';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// let templateRoot = resolve(__dirname, '../templates');
-const templateRoot = upath.resolve(__dirname, '../templates')
-
-console.log(chalk.redBright("DEBUG:"));
-console.log(__filename);
-console.log(__dirname)
-console.log(templateRoot);
-console.log(chalk.redBright("END DEBUG"));
-//${chalk.yellow("Directus with MySQL, Adminer, and GraphiQL:")}
 
 const caveat = `
-Installed successfully.
+${chalk.yellow("Directus with MySQL, Adminer, and GraphiQL:")}
+
+To configure and run your Directus services, run:
+
+cd ${chalk.bold.green(options.name)} && npm start
+
+For more information, see: 
+https://github.com/davekobrenski/create-directus-docker
+
+Enjoy!
 `;
 
 create('create-directus-docker', {
-  templateRoot: upath.resolve(__dirname, '../templates')
+  templateRoot: upath.resolve(__dirname, '../templates'),
+  caveat
 });
