@@ -10,7 +10,7 @@ import { create } from 'create-create-app';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const templateRoot = resolve(__dirname, '..', 'templates');
+const templateRoot = resolve(__dirname, '../templates');
 
 const caveat = () => {
 return `
