@@ -10,16 +10,16 @@ import { create } from 'create-create-app';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const templateRoot = resolve(__dirname, '../templates');
+let templateRoot = resolve(__dirname, '../templates');
 
-const caveat = () => {
-return `
+console.log(templateRoot);
+
+const caveat = `
 ${chalk.yellow("Directus with MySQL, Adminer, and GraphiQL:")}
 
 Installed successfully.
 
-`
-}
+`;
 
 create('create-directus-docker', {
   templateRoot,
