@@ -7,7 +7,7 @@ services:
     image: mysql:8
     restart: always
     healthcheck: 
-      test: ['mysqladmin', 'ping', '--silent']
+      test: ['CMD', 'mysqladmin', 'ping', '--silent']
       interval: 5s
       timeout: 20s
       retries: 3
@@ -47,8 +47,9 @@ services:
   directus:
     container_name: directus
     image: directus/directus:latest
+    restart: always
     ports:
-      - 8055:8055
+      - ${DIRECTUS_PORT}:8055
     volumes:
       - ./directus/uploads:/directus/uploads
     networks:
@@ -72,7 +73,7 @@ services:
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       CORS_ENABLED: 'true'
-      CORS_ORIGIN: '*'
+      CORS_ORIGIN: 'true'
 
       PUBLIC_URL: ${PUBLIC_URL}
 
