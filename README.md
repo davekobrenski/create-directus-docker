@@ -31,6 +31,10 @@ Directus CMS: http://localhost:8055
 Adminer (for MySQL): http://localhost:8080  
 GraphQL Playground: http://localhost:4000/graphql  
 
+## Seeding MySQL data
+
+If you want to seed your database with data on first launch, place your .sql file(s) in the "init" directory at the root of this package, BEFORE you run all services. MySQL will run any files in this directory the first time it launches.
+
 ## Starting/stopping with Docker Compose
 
 To **stop** your running containers, simply run either `npm run stop` or  `docker compose down` from within the project directory. All containers will be stopped.
