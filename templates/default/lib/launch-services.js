@@ -111,26 +111,35 @@ export default function launchServices() {
                     //It may be that it's running, so let's be sure.
                     logUpdate('Directus taking a long time to respond...');
 
-                    const check = spawn('docker-compose', ['ps', '--format', 'json']);
+                    const check = spawn('docker-compose', ['ps', '-a', '--format', 'json']);
 
                     check.stdout.on('data', (data) => {
                         const q = 'map(select(.Name == "directus")) | .[0] | {Name: .Name, Service: .Service, State: .State}';
                         jq.run(q, data.toString(), { input: 'string' })
                             .then((data) => {
                                 const json = JSON.parse(data);
+                                console.log(data);
 
                                 if(json.State == 'running') {
                                     logUpdate(`${chalk.yellowBright("Directus appears to be running, but took a while to respond.")}`);
                                     console.log(`Just run ${chalk.greenBright("npm run launch")} to verify, and you should be good to go.`);
                                     logUpdate.done();
-                                    process.exit(1);
                                 } else {
+                                    logUpdate(`${chalk.redBright("Directus taking too long to respond. You may need to manually start it.")}`);
                                     logUpdate.done();
-                                    console.log(`${chalk.redBright("Directus taking too long to respond. You may need to manually start it.")}`);
                                     console.log(`Just run ${chalk.greenBright("npm run launch")} and you should be good to go.`);
-                                    process.exit(1);
                                 }
                             });
+                    });
+
+                    check.on('close', (code) => {
+                        if (code !== 0) {
+                            console.log(`${chalk.redBright("Directus taking too long to respond. You may need to manually start it.")}`);
+                            console.log(`Just run ${chalk.greenBright("npm run launch")} and you should be good to go.`);
+                        } else {
+                            console.log(`${chalk.yellowBright("Directus appears to be running, but took a while to respond.")}`);
+                            console.log(`Just run ${chalk.greenBright("npm run launch")} to verify, and you should be good to go.`);
+                        }
                     });
                 });
             });
