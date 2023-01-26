@@ -1,13 +1,16 @@
 {
   "name": "create-directus-docker",
   "description": "An installer for Dockerized Directus + MySQL + Adminer + GraphiQL with a helper Node app",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "type": "module",
   "author": {
     "name": "Dave Kobrenski",
     "email": "dave@rlmg.com"
   },
-  "bin": "src/cli.js",
+  "bin": {
+    "create-directus-docker": "src/cli.js",
+    "cdd": "src/cli.js"
+  },
   "keywords": [
     "directus",
     "docker",
@@ -32,10 +35,11 @@
   ],
   "dependencies": {
     "chalk": "^5.2.0",
-    "create-create-app": "7.1.0",
     "execa": "^6.1.0",
+    "fs-extra": "^11.1.0",
     "log-update": "^5.0.1",
-    "upath": "^2.0.1"
+    "upath": "^2.0.1",
+    "yargs": "^17.6.2"
   },
   "license": "MIT",
   "devDependencies": {
