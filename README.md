@@ -35,6 +35,28 @@ GraphQL Playground: http://localhost:4000/graphql
 
 If you want to seed your database with data on first launch, place your .sql file(s) in the "init" directory at the root of this package, BEFORE you run all services. MySQL will run any files in this directory the first time it launches.
 
+### Snapshot the Data Model
+
+Directus can automatically generate a snapshot of your current data model in YAML format. This includes all collections, fields, and relations, and their configuration. This snapshot can be checked in version control and shared with your team. To generate the snapshot, run:
+
+`npm run snapshot`
+
+The 'directus' container **must be running** in order to take a snapshot.
+
+### Apply a Snapshot
+
+To overwrite the current Directus instance with the data model specified in that snapshot, you can apply a snapshot by running:
+
+`npm run snapshot-apply --snapshot=snapshot-file.yaml`
+
+Change the name of the file in the command to match an actual snapshot file in your 'snapshots' directory.
+
+By applying the snapshot, Directus will auto-detect the changes required to make the current instance up to date with the proposed data model in the snapshot file, and will run the required migrations to the database to make it match the snapshot. This is useful when migrating to/from another directus instance.
+
+**It is recommended that you test this first by doing a dry-run like this:**
+
+`npm run snapshot-test --snapshot=snapshot-file.yaml`
+
 ## Starting/stopping with Docker Compose
 
 To **stop** your running containers, simply run either `npm run stop` or  `docker compose down` from within the project directory. All containers will be stopped.
