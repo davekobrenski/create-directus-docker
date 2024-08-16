@@ -29,7 +29,7 @@ The wizard will walk you through configuring your environment variables, and wil
 
 Directus CMS: http://localhost:8055  
 Adminer (for MySQL): http://localhost:8080  
-GraphQL Playground: http://localhost:4000/graphql  
+Apollo GraphQL Sandbox: https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:8055  
 
 ## Seeding MySQL data
 
@@ -71,30 +71,8 @@ The helper app waits for MySQL to be ready before starting the rest of the servi
 
 Simply run `docker compose ps` to see the status of running containers. Or, run `docker compose ps -a` to see all containers, running or not.
 
-## CORS problems on localhost
+### Examples of getting an auth token for Directus API:
 
-When using the GraphiQL playground on localhost, you'll run into some browser problems related to CORS. Here's how to get around it:
+curl -X POST localhost:8055/auth/login -H 'Content-Type: application/json' -d '{"email":"you@email.com","password":"your-password"}'
 
-**Safari:**
-
-1. Enable the developer menu by opening up Settings > Advanced, then check "Show Develop bar in menu"
-2. Click the Develop menu and check "Disable Cross-Origin Restrictions"
-
-**Chrome**
-
-Temporarily Disable CORS in Chrome (MacOS):
-
-1. Quit Chrome
-2. Open terminal and run:
-
-`open -n -a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security`
-
-**Windows:**
-
-1. Right click on desktop, add new shortcut
-2. Add the target as "[PATH_TO_CHROME]\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
-3. Click OK
-
-**Firefox:**
-
-For Firefox you can simply install [CORS Everywhere](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) addon.
+curl -X POST localhost:8055/auth/refresh -H 'Content-Type: application/json' -d '{"refresh_token": "W5L70MBXKElx5ZVZwxmQVG8qdVjukiRVIwD5FYG7tCPyyuCM_I3IyCsYnFhMUrRi", "mode": "json"}'
