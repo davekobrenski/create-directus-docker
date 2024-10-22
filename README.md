@@ -29,7 +29,7 @@ The wizard will walk you through configuring your environment variables, and wil
 
 Directus CMS: http://localhost:8055  
 Adminer (for MySQL): http://localhost:8080  
-Apollo GraphQL Sandbox: https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:8055  
+Apollo GraphQL Sandbox: https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:8055/graphql  
 
 ## Seeding MySQL data
 
