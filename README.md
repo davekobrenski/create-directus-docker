@@ -1,15 +1,15 @@
-# Docker with Directus + MySQL + Adminer + GraphiQL
+## Docker with Directus / MySQL / Adminer / GraphQL
 
-A quick-start installer and launcher for Docker compose, containing Directus with MySQL, an Adminer UI for managing the database, and a GraphiQL playground. Plus a helper app to walk you through initializing environment variables and launching all services. 
+A quick-start installer and launcher for Docker compose, containing Directus with MySQL, an Adminer UI for managing the database, and a GraphiQL playground. Plus a helper app to walk you through initializing environment variables and launching all services.
 
-## Requirements
-
-You need [Docker](https://www.docker.com) and [Node](https://nodejs.org) installed on your machine:
+**Requirements:** you need [Docker](https://www.docker.com) and [Node](https://nodejs.org) installed on your machine:
 
 - [Install Docker Desktop](https://www.docker.com/products/docker-desktop/)  
 - [Install Node](https://nodejs.org/en/download/)
 
 ## Installation & Usage
+
+**The easiest way to get up and running is to open a terminal session and run:**
 
 ```bash
 npx create-directus-docker@latest <my-project>
@@ -25,15 +25,61 @@ npm start
 
 The wizard will walk you through configuring your environment variables, and will launch all services for you.
 
+### Seeding MySQL data
+
+If you want to seed your database with data on first launch, place your .sql file(s) in the "init" directory at the root of this package. MySQL will run any files in this directory the first time it launches.
+
+### Starting/stopping with Docker Compose
+
+To **stop** your running containers, simply run `docker compose down` in your terminal from within the project directory. All containers will be stopped.
+
+To **restart** your stopped containers, you can let the helper app do it for you:
+
+`npm start`
+
+Or you can follow this sequence:
+
+`docker compose up mysql -d`
+
+Then wait 10-20 seconds (for MySQL to boot), then type:
+
+`docker compose up -d`
+
 **Boom!** You're done. Now you can access the URLS from here:
 
 Directus CMS: http://localhost:8055  
-Adminer (for MySQL): http://localhost:8080  
 Apollo GraphQL Sandbox: https://studio.apollographql.com/sandbox/explorer?endpoint=http://localhost:8055/graphql  
+Adminer (for MySQL): http://localhost:8080
 
-## Seeding MySQL data
+**Check on running containers:**
 
-If you want to seed your database with data on first launch, place your .sql file(s) in the "init" directory at the root of this package, BEFORE you run all services. MySQL will run any files in this directory the first time it launches.
+Simply run `docker compose ps` to see the status of running containers. Or, run `docker compose ps -a` to see all containers, running or not.
+
+### NGINX Proxy example
+
+Included in this package is also a `docker-compose-nginx.yml` file that demonstrates how to run a reverse proxy on a Linux-based server so that you can use a custom domain with an auto-generated/renewed SSL certificate via Let's Encrypt.
+
+To use this, rename the existing `docker-compose.yml` file to something else, and rename the `docker-compose-nginx.yml` to `docker-compose.yml`.
+
+Add the following env variables to your `.env` file:
+
+```bash
+VIRTUAL_HOST="your-domain.com"
+CERT_EMAIL="you@email"
+```
+
+and make sure your Directus .env variables look something like this:
+
+```bash
+DIRECTUS_DOMAIN="localhost"
+DIRECTUS_PORT="8055"
+PUBLIC_URL="https://your-domain.com"
+API_ENDPOINT="https://your-domain.com/graphql"
+```
+
+Lastly, before running `npm start`, make sure you have pointed to your domain's DNS to your server using the appropriate A records.
+
+Note: you may need to adjust or disable your firewall before running this, to ensure that the SSL certificate can be properly generated using the included `acme-companion` container for Let's Encrypt.
 
 ### Snapshot the Data Model
 
@@ -56,20 +102,6 @@ By applying the snapshot, Directus will auto-detect the changes required to make
 **It is recommended that you test this first by doing a dry-run like this:**
 
 `npm run snapshot-test --snapshot=snapshot-file.yaml`
-
-## Starting/stopping with Docker Compose
-
-To **stop** your running containers, simply run either `npm run stop` or  `docker compose down` from within the project directory. All containers will be stopped.
-
-To **restart** your stopped containers, you can let the helper app do it for you:
-
-`npm start`
-
-The helper app waits for MySQL to be ready before starting the rest of the services (otherwise, you'd get errors).
-
-**Check on running containers:**
-
-Simply run `docker compose ps` to see the status of running containers. Or, run `docker compose ps -a` to see all containers, running or not.
 
 ### Examples of getting an auth token for Directus API:
 
