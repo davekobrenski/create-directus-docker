@@ -1,7 +1,7 @@
 {
   "name": "create-directus-docker",
   "description": "An installer for Dockerized Directus + MySQL + Adminer + GraphQL Sandbox with a helper Node app",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "type": "module",
   "author": {
     "name": "Dave Kobrenski",
@@ -29,7 +29,8 @@
     "copy:compose": "copy-file ../directus-mysql-template/docker-compose.yml ./templates/default/docker-compose.yml",
     "copy:compose-nginx": "copy-file ../directus-mysql-template/docker-compose-nginx.yml ./templates/default/docker-compose-nginx.yml",
     "copy:readme": "copy-file ../directus-mysql-template/README.md ./templates/default/README.md",
-    "copy:lib": "copyfiles --flat ../directus-mysql-template/lib/*.js ./templates/default/lib"
+    "copy:lib": "copyfiles --flat ../directus-mysql-template/lib/*.js ./templates/default/lib",
+    "copy:conf": "copy-file ../directus-mysql-template/custom_proxy_settings.conf ./templates/default/custom_proxy_settings.conf"
   },
   "files": [
     "src",
