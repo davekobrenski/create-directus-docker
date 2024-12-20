@@ -25,6 +25,14 @@ npm start
 
 The wizard will walk you through configuring your environment variables, and will launch all services for you.
 
+### Permissions
+
+You may need to grant additional access to the 'directus' directory, so that Directus can create files there. Just run:
+
+```
+sudo chmod -R 777 directus
+```
+
 ### Seeding MySQL data
 
 If you want to seed your database with data on first launch, place your .sql file(s) in the "init" directory at the root of this package. MySQL will run any files in this directory the first time it launches.
